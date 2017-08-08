@@ -74,9 +74,9 @@ public abstract class ShareIntent {
     protected void openIntentChooser() throws ActivityNotFoundException {
         System.out.println(this.getIntent());
         System.out.println(this.getIntent().getExtras());
-        Intent chooser = Intent.createChooser(this.getIntent(), this.chooserTitle);
-        chooser.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.reactContext.startActivity(chooser);
+        Intent intent = this.getIntent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.reactContext.startActivity(intent);
     }
     protected boolean isPackageInstalled(String packagename, Context context) {
         PackageManager pm = context.getPackageManager();
