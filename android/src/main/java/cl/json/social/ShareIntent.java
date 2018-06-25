@@ -76,7 +76,9 @@ public abstract class ShareIntent {
         System.out.println(this.getIntent().getExtras());
         Intent intent = this.getIntent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.reactContext.startActivity(Intent.createChooser(intent, chooserTitle));
+        Intent createChooser = Intent.createChooser(intent, chooserTitle);
+        createChooser.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.reactContext.startActivity(createChooser);
     }
     protected boolean isPackageInstalled(String packagename, Context context) {
         PackageManager pm = context.getPackageManager();
